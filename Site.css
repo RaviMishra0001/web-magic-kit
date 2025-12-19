@@ -1,0 +1,61 @@
+﻿.btnClear-3d {
+    /*width: 100%;*/
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-color: orangered;
+    border-width: 15px;
+    color: orangered;
+    background-color: white;
+    box-shadow: 0 6px 0 orangered;
+    position: relative;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+    .btnClear-3d:hover {
+        top: 2px;
+        box-shadow: 0 4px 0 orangered;
+        transform: scale(1.03);
+        color: white;
+        background-color: orangered;
+    }
+
+.btnSubmit-3d {
+    /*width: 100%;*/
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-color: darkseagreen;
+    border-width: 15px;
+    color: darkseagreen;
+    background-color: white;
+    box-shadow: 0 6px 0 darkseagreen;
+    position: relative;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+    .btnSubmit-3d:hover {
+        top: 2px;
+        box-shadow: 0 4px 0 darkseagreen;
+        transform: scale(1.03);
+        color: white;
+        background-color: darkseagreen;
+    }
+
+.input::placeholder {
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.input:focus::placeholder {
+    color: #999;
+}
+
