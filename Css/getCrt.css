@@ -1,0 +1,143 @@
+﻿
+#popup {
+    display: flex;
+    position: fixed;
+    top: 23px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 40px;
+    top: -65px;
+    width: 400px;
+    max-width: 90%;
+    color: #1f2937;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    box-shadow: 0 0 15px #779b77;
+    backdrop-filter: blur(15px);
+    animation: popupSlideIn 0.4s ease-out;
+    border: 1px solid #779b77;
+}
+
+@keyframes popupSlideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.popup-content h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.popup-content p {
+    margin: 10px 0;
+    font-size: 16px;
+    word-break: break-word;
+}
+
+.popup-content strong {
+    color: #ffffffdd;
+}
+
+.popup-btns {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .popup-btns button {
+        background-color: transparent;
+        color: #8fbc8f;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+.btnClear-3d {
+    border: 1px solid var(--danger);
+    border-color: var(--danger);
+    border-width: 1px !important;
+    color: var(--danger) !important;
+}
+
+    .btnClear-3d:hover {
+        background-color: var(--danger);
+        color: var(--accent-white) !important;
+    }
+
+.btnSubmit-3d:hover {
+    background-color: #8fbc8f;
+    color: #fff;
+}
+
+btnSubmit-3d:hover {
+    top: 2px;
+    box-shadow: 0 4px 0 darkseagreen;
+    transform: scale(1.03);
+    color: #fff !important;
+    background-color: darkseagreen;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #ffffffcc;
+    cursor: pointer;
+}
+
+    .popup-close:hover {
+        color: #00fff2;
+    }
+
+
+.pulse-icon {
+    color: darkseagreen;
+    animation: pulse 2s infinite ease-in-out;
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    80% {
+        transform: scale(1.3);
+    }
+}
+
+
+/* Form Styles */
+.form-control {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border-color: #e0e0e0;
+}
+
+    .form-control:focus {
+        border-color: #0288d1;
+        box-shadow: 0 0 0 0.2rem rgba(2,136,209,0.25);
+    }
+
