@@ -308,9 +308,10 @@ $(document).on("click", ".buy-btn", function (e) {
     const amountINR = Math.round(amountUSD * 85);
 
     // Change these URLs if needed
-    const createOrderUrl = '/Payment/CreateOrder';
-    const verifyUrl = '/Payment/VerifyPayment';
-
+    //const createOrderUrl = '/Payment/CreateOrder';
+   // const verifyUrl = '/Payment/VerifyPayment';
+    const createOrderUrl = '@Url.Action("CreateOrder", "Payment")';
+    const verifyUrl = '@Url.Action("VerifyPayment", "Payment")';
     $.post(createOrderUrl, { amount: amountINR, currency: "INR" })
         .done(orderData => {
             if (orderData.error) {
@@ -364,4 +365,5 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggleBtn) {
         toggleBtn.addEventListener("click", toggleStickyNav);
     }
+
 });
