@@ -310,8 +310,8 @@ $(document).on("click", ".buy-btn", function (e) {
     // Change these URLs if needed
     //const createOrderUrl = '/Payment/CreateOrder';
    // const verifyUrl = '/Payment/VerifyPayment';
-    const createOrderUrl = '@Url.Action("CreateOrder", "Payment")';
-    const verifyUrl = '@Url.Action("VerifyPayment", "Payment")';
+   const createOrderUrl = window.paymentUrls.createOrder;
+    const verifyUrl = window.paymentUrls.verifyPayment;
     $.post(createOrderUrl, { amount: amountINR, currency: "INR" })
         .done(orderData => {
             if (orderData.error) {
@@ -367,3 +367,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
