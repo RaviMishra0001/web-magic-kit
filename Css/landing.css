@@ -685,3 +685,38 @@ footer, footer a, footer p, footer span, footer div {
     opacity: 1;
 }
 
+.animated-logo {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    display: inline-block;
+    border: none;
+    outline: none;
+    /* removes video look completely */
+    background: transparent;
+    pointer-events: none; /* click disable */
+    /* smooth animated effect */
+    border-radius: 10px;
+    image-rendering: smooth;
+    filter: brightness(1.1) contrast(1.1);
+    /* add subtle animation feel */
+    animation: subtleFloat 2.5s ease-in-out infinite;
+}
+
+/* Optional, makes it feel like animated GIF */
+@keyframes subtleFloat {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+
