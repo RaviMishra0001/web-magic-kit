@@ -1,0 +1,254 @@
+
+    :root {
+        --primary-bg: #f5f7fa;
+        --secondary-bg: #ffffff;
+        --text-color: #2d3748;
+        --code-bg: #1a202c;
+        --code-text: #e2e8f0;
+        --accent-color: #3182ce; /* Better blue - professional & vibrant */
+        --accent-hover: #2c5282;
+        --border-color: #e2e8f0;
+        --success-color: #38a169;
+        --note-bg: #fef5e7;
+        --note-border: #ed8936;
+    }
+
+    [data-theme="dark"] {
+        --primary-bg: #1a202c;
+        --secondary-bg: #2d3748;
+        --text-color: #e2e8f0;
+        --code-bg: #171923;
+        --code-text: #cbd5e0;
+        --accent-color: #63b3ed;
+        --accent-hover: #4299e1;
+        --border-color: #4a5568;
+        --note-bg: #3c2f1a;
+        --note-border: #ed8936;
+    }
+
+    body {
+        background: var(--primary-bg);
+        color: var(--text-color);
+        font-family: 'Inter', 'Hind', sans-serif;
+        line-height: 1.7;
+        transition: all 0.4s ease;
+    }
+
+    .container-fluid {
+        max-width: 1400px;
+    }
+
+    h1, h2, h3, h4 {
+        font-weight: 600;
+        color: var(--accent-color);
+    }
+
+    section {
+        background: var(--secondary-bg);
+        border-radius: 16px;
+        margin-bottom: 2.5rem;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--border-color);
+    }
+
+    .collapsible-header {
+        background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+        color: white;
+        padding: 1.5rem 2rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.4s ease;
+        user-select: none;
+    }
+
+        .collapsible-header:hover {
+            background: linear-gradient(135deg, var(--accent-hover), #2c4a6e);
+        }
+
+        .collapsible-header i {
+            transition: transform 0.4s ease;
+            font-size: 1.2rem;
+        }
+
+        .collapsible-header.active i {
+            transform: rotate(180deg);
+        }
+
+    .collapsible-content {
+        padding: 2.5rem;
+        display: none;
+        background: var(--secondary-bg);
+    }
+
+        .collapsible-content.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+    .method {
+        background: rgba(255, 255, 255, 0.25);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        margin-left: 1rem;
+        backdrop-filter: blur(4px);
+    }
+
+    code.endpoint {
+        background: var(--code-bg);
+        color: #ff7b72;
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        word-break: break-all;
+        display: inline-block;
+        margin: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    pre {
+        background: var(--code-bg);
+        color: var(--code-text);
+        padding: 1.8rem;
+        border-radius: 12px;
+        overflow-x: auto;
+        margin: 2rem 0;
+        font-size: 0.95rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 0.8rem 1.5rem;
+        border-radius: 12px 12px 0 0;
+        margin: -2rem 0 0 0;
+        font-weight: 500;
+    }
+
+    .copy-btn {
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+
+        .copy-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 2rem 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+        padding: 1.2rem;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+        background: var(--accent-color);
+        color: white;
+        font-weight: 600;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tr:hover {
+        background: rgba(49, 130, 206, 0.05);
+    }
+
+    .bilingual {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        margin: 2.5rem 0;
+    }
+
+        .bilingual > div {
+            background: rgba(49, 130, 206, 0.08);
+            padding: 2rem;
+            border-radius: 14px;
+            border: 1px solid rgba(49, 130, 206, 0.2);
+        }
+
+    .lang-label {
+        font-weight: bold;
+        color: var(--accent-color);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: 0.6rem;
+        display: inline-block;
+    }
+
+    .note {
+        background: var(--note-bg);
+        color: #c05621;
+        border-left: 6px solid var(--note-border);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 10px 10px 0;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(237, 137, 54, 0.15);
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        margin: 2rem 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        border: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 992px) {
+        .bilingual {
+            grid-template-columns: 1fr;
+        }
+
+        .collapsible-header {
+            padding: 1.2rem 1.5rem;
+        }
+
+        .collapsible-content {
+            padding: 2rem;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
