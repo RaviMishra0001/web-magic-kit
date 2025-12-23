@@ -177,15 +177,4 @@
         });
 
 
-        // LOGOUT CONFIRM
-        document.getElementById('logoutBtn').addEventListener('click', function (e) {
-            e.preventDefault();
-            Notiflix.Confirm.show(
-                "Confirm Logout",
-                "Are you sure you want to logout?",
-                "Yes", "No",
-                function () {
-                    window.location.href = '@Url.Action("Logout", "Account")';
-                }
-            );
-        });
+       
