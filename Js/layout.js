@@ -217,20 +217,5 @@ $(document).ready(function () {
             window.history.replaceState(null, null, window.location.href);
         }
 
-$('#logoutBtn').on('click', function(e) {
-    e.preventDefault();
 
-    Notiflix.Confirm.show(
-        'Confirm Logout',
-        'Are you sure you want to logout?',
-        'Yes',
-        'No',
-        function() {
-            window.location.href = '@Url.Action("Logout", "Account")';
-        },
-        function() {
-            // Cancel clicked — do nothing
-        }
-    );
-});
 
