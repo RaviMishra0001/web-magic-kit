@@ -1,0 +1,305 @@
+
+        /* Base Styles */
+        :root {
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --text-color: #1a1a1a;
+            --code-bg: #1e1e1e;
+            --code-text: #f8f8f2;
+            --accent-color: #007bff;
+            --border-color: #e9ecef;
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] {
+            --primary-bg: #1a1a1a;
+            --secondary-bg: #2d2d2d;
+            --text-color: #e9ecef;
+            --code-bg: #2d2d2d;
+            --code-text: #f8f8f2;
+            --accent-color: #66b3ff;
+            --border-color: #444;
+        }
+
+        body {
+            background: var(--primary-bg);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-color);
+            animation: slideInDown 0.6s ease-in-out;
+        }
+        /* === BOX with ANIMATED BORDER === */
+        .box {
+            position: relative;
+            padding: 10px;
+            border: 8px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+
+            /* Animated Border Spans */
+            .box .border {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+                box-sizing: border-box;
+                pointer-events: none;
+                border: none !important;
+            }
+
+                .box .border:nth-child(1) {
+                    transform: rotate(0deg);
+                }
+
+                .box .border:nth-child(2) {
+                    transform: rotate(90deg);
+                }
+
+                .box .border:nth-child(3) {
+                    transform: rotate(180deg);
+                }
+
+                .box .border:nth-child(4) {
+                    transform: rotate(270deg);
+                }
+
+                .box .border:before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    background: var( --dynamic-header-bg);
+                    animation: animate 4s linear infinite;
+                    border-radius: 2px;
+                }
+
+        /* Animation Keyframes */
+        @keyframes animate {
+            0% {
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+
+            50% {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+            50.1% {
+                transform: scaleX(1);
+                transform-origin: right;
+            }
+
+            100% {
+                transform: scaleX(0);
+                transform-origin: right;
+            }
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            position: absolute;
+            transform: translate(-155px, 0px);
+            background: var(--dynamic-body-bg) !important;
+        }
+
+            .dropdown:hover .dropdown-menu li a:active, .dropdown:hover .dropdown-menu button:active {
+                color: var(--accent-white);
+                text-decoration: none;
+                background-color: var(--green-medium);
+            }
+
+        #logoutBtn:active {
+            color: var(--accent-white);
+            text-decoration: none;
+            background-color: var(--green-medium);
+        }
+
+
+
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000; /* Background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .loader {
+            position: relative;
+            transform: rotateZ(45deg);
+            perspective: 1000px;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            color: #00E5FF; /* Loader Color 1 */
+        }
+
+            .loader:before,
+            .loader:after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: inherit;
+                height: inherit;
+                border-radius: 50%;
+                transform: rotateX(70deg);
+                animation: 1s spin linear infinite;
+            }
+
+            .loader:after {
+                color: #FF3D00; /* Loader Color 2 */
+                transform: rotateY(70deg);
+                animation-delay: .4s;
+            }
+
+        @keyframes spin {
+            0%, 100% {
+                box-shadow: .2em 0px 0 0px currentcolor;
+            }
+
+            12% {
+                box-shadow: .2em .2em 0 0 currentcolor;
+            }
+
+            25% {
+                box-shadow: 0 .2em 0 0px currentcolor;
+            }
+
+            37% {
+                box-shadow: -.2em .2em 0 0 currentcolor;
+            }
+
+            50% {
+                box-shadow: -.2em 0 0 0 currentcolor;
+            }
+
+            62% {
+                box-shadow: -.2em -.2em 0 0 currentcolor;
+            }
+
+            75% {
+                box-shadow: 0px -.2em 0 0 currentcolor;
+            }
+
+            87% {
+                box-shadow: .2em -.2em 0 0 currentcolor;
+            }
+        }
+
+
+        :root {
+            --dynamic-primary: #98C69A; /* Default fallback */
+            --dynamic-text: #000;
+            --dynamic-header-bg: #98C69ACC;
+            --dynamic-body-bg: #98C69A18; /* Soft body tint */
+            --dynamic-card-bg: #ffffff08;
+        }
+
+        /* Apply dynamic body background */
+        body {
+            background: var(--dynamic-body-bg) !important;
+        }
+
+        /* Floating animated color button */
+        .theme-sticky {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            background: var(--dynamic-primary);
+            color: var(--dynamic-text);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+            .theme-sticky:hover {
+                transform: translateY(-50%) scale(1.1);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            }
+
+        .colorwheel {
+            font-size: 34px;
+            background: linear-gradient(90deg, #ff0040, #ff8c00, #ffee00, #00e676, #00b0ff, #8e24aa, #ff0040);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease infinite, spin 6s linear infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @@keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Color Picker (appears next to button) */
+        #dynamicColorPicker {
+            position: fixed;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+            z-index: 1000;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 4px solid white;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            opacity: 0.95;
+        }
+
+        /* Apply dynamic color globally */
+        .btn-outline-light,
+        .sidebar,
+        .topbar,
+        .dropdown-menu,
+        .box .border:before,
+        .swiper-pagination-bullet-active,
+        .section-title h2:before,
+        .section-title h2::after,
+        .sticky_icons_group .icon_container {
+            transition: all 0.4s ease;
+        }
