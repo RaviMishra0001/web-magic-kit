@@ -1,0 +1,309 @@
+﻿/* users-management.css */
+
+/* BODY & BACKGROUND */
+body {
+    background: linear-gradient(135deg, #0b1120, #1c2a48, #0b1120);
+    background-size: 300% 300%;
+    animation: bgMove 15s ease infinite;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    color: #fff;
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* GRID CONTAINER */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 30px;
+    padding: 0 40px;
+}
+
+/* USER CARD */
+.user-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 22px 28px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.08));
+    backdrop-filter: blur(16px);
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: grab;
+    overflow: hidden;
+}
+
+    .user-card:hover {
+        transform: translateY(-14px) scale(1.05) rotateY(calc((var(--x,50%) - 50%) * 0.9deg)) rotateX(calc((50% - var(--y,50%)) * 0.8deg)) translateZ(100px);
+        box-shadow: 0 25px 45px rgba(0,0,0,0.6);
+        z-index: 10;
+    }
+
+    .user-card::before {
+        content: "\f007";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 140px;
+        position: absolute;
+        right: -20px;
+        bottom: -20px;
+        color: rgba(255,255,255,0.06);
+        transform: rotate(-20deg);
+    }
+
+    .user-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.12) 45%, rgba(130,170,255,0.18) 50%, transparent 55%);
+        background-size: 300% 300%;
+        animation: shineFlow 12s linear infinite;
+        pointer-events: none;
+        opacity: 0.8;
+    }
+
+@keyframes shineFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.glare {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,255,255,0.5) 0%, rgba(130,170,255,0.2) 40%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.user-card:hover .glare {
+    opacity: 1;
+}
+
+.user-card:hover .logo-img {
+    border-color: #82aaff;
+    box-shadow: 0 0 30px rgba(130,170,255,0.5);
+}
+
+.logo-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.5);
+    object-fit: cover;
+    margin-right: 25px;
+    flex-shrink: 0;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    transition: all 0.4s ease;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+    .card-text .company-name {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #82aaff;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+
+    .card-text h3 {
+        margin: 4px 0;
+        font-size: 1.25rem;
+        color: #f0f9ff;
+    }
+
+    .card-text p {
+        margin: 2px 0;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #d1d5db;
+    }
+
+.badge {
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.active {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.inactive {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.role {
+    background: linear-gradient(135deg, #6366f1, #818cf8);
+}
+
+.badges-top {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    top: 18px;
+    right: 18px;
+}
+
+/* MODAL STYLES */
+.custom-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+    .custom-modal-overlay.show {
+        display: flex !important;
+    }
+
+.custom-modal-content {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(98, 95, 95, 0.12);
+    backdrop-filter: blur(24px);
+    border-radius: 28px;
+    padding: 20px 40px;
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: modalShow 0.25s ease;
+    height: 85vh;
+    overflow: auto;
+}
+
+@keyframes modalShow {
+    from {
+        transform: scale(0.88);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.glass-input {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 10px;
+    border-radius: 14px;
+    transition: 0.25s ease;
+    backdrop-filter: blur(8px);
+}
+
+    .glass-input:hover {
+        background: rgba(255,255,255,0.12);
+        border-color: rgba(255,255,255,0.28);
+    }
+
+.glass-field {
+    background-color: transparent !important;
+    border: none !important;
+    color: #fff !important;
+    font-size: 14px;
+    padding: 0 !important;
+    box-shadow: none !important;
+    width: 100%;
+}
+
+    .glass-field:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+.logo-img.modal-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.4);
+    transition: transform .25s ease;
+}
+
+    .logo-img.modal-logo:hover {
+        transform: scale(1.05);
+    }
+
+.btn-save {
+    background: linear-gradient(135deg, #4f46e5, #818cf8);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    border: none;
+    transition: .25s ease;
+}
+
+    .btn-save:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+    }
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    border: none;
+    transition: .25s ease;
+}
+
+    .btn-cancel:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.5);
+    }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .user-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo-img {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+}

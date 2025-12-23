@@ -1,0 +1,162 @@
+﻿/*
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;  Background color 
+display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.loader {
+    position: relative;
+    transform: rotateZ(45deg);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: #00E5FF;  Loader Color 1 
+}
+
+    .loader:before,
+    .loader:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        transform: rotateX(70deg);
+        animation: 1s spin linear infinite;
+    }
+
+    .loader:after {
+        color: #FF3D00;  Loader Color 2 
+transform: rotateY(70deg);
+        animation-delay: .4s;
+    }
+
+*/
+
+
+.blur-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease;
+    z-index: 9000;
+    pointer-events: none;
+}
+
+.blur-layer.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.1); /* थोड़ा dark किया ताकि logo highlight हो */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease;
+    z-index: 9999;
+}
+
+    .loader.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+/* Circles */
+.circle {
+    width: 220px; /* थोड़ा बड़ा किया ताकि logo के लिए space बने */
+    height: 220px;
+    border-radius: 360px 400px;
+    border: 12px solid;
+    position: absolute;
+}
+
+.c1 {
+    animation: rota 2.2s linear infinite;
+    border-color: orange;
+}
+
+.c2 {
+    animation: rota 3s linear infinite;
+    border-color: red;
+}
+
+.c3 {
+    animation: rota 2s linear infinite;
+    border-color: #fff;
+    opacity: 0.5;
+}
+
+.c4 {
+    animation: rota 1s linear infinite;
+    border-color: white;
+    opacity: 0.8;
+}
+
+@keyframes rota {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Logo container - loader के अंदर center में */
+/* Logo container - extra ensure कि image सीधी रहे */
+.logo-container {
+    position: absolute;
+    width: 130px; /* logo size बढ़ाया थोड़ा */
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo-container {
+    animation: none;
+    transform: rotate(-50deg); /* या जो angle सही लगे */
+}
+
+    .logo-container video {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 50%; /* optional: video को गोल बनाओ */
+    }
+
+.loader-logo {
+    height: 140px;
+    width: 125px;
+}
+
+
+

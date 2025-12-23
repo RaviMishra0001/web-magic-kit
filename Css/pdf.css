@@ -1,0 +1,128 @@
+﻿.custom-Pdf-table thead tr th {
+    /*padding: 8px 0 8px 0px;*/
+    background: #4a4e58;
+    color: #fff;
+}
+
+.custom-Pdf-table tbody tr td {
+    /*padding: 3px 0 3px 0px;*/
+}
+/* DataTables wrapper ka min-height remove karo (common old issue) */
+.dataTables_wrapper {
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+/* Custom top aur bottom controls ka padding kam karo ya zero karo */
+.top-controls {
+    padding: 0px 20px !important; /* ya 0 kar do agar bilkul nahi chahiye */
+    margin-bottom: 0 !important;
+}
+
+.bottom-area {
+    padding: 8px 20px !important; /* ya 0 kar do */
+    margin-top: 0 !important;
+}
+
+/* Pagination aur info ke beech extra margin remove */
+.dataTables_paginate,
+.dataTables_info {
+    margin: 0 !important;
+    padding: 5px 0 !important;
+}
+
+/* Agar table ke baad card ya container mein extra space hai */
+.card-body {
+    padding-bottom: 0 !important;
+}
+
+/* Overall tight look ke liye */
+#myTable_wrapper .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .custom-Pdf-table thead tr th,
+    .custom-Pdf-table tbody tr td {
+        padding-left: 15px;
+        font-size: 14px;
+    }
+
+    .btn-sm {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+}
+
+.top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 30px;
+    background: #ffffff;
+}
+
+.entries, .search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+    min-width: 150px; /* Prevents too much shrinking */
+}
+
+    .entries select, .search input {
+        padding: 8px 2px;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.2s;
+        width: 100%;
+    }
+
+        .entries select:focus, .search input:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+/* Bottom area */
+.bottom-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /*gap: 15px;*/
+    /*padding: 15px 0px;*/
+    background: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    font-size: 13px;
+}
+
+@media (max-width: 576px) {
+    .top-controls, .bottom-area {
+        padding: 15px;
+        justify-content: center;
+    }
+
+    .entries, .search {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* DataTables override for better mobile look */
+#myTable tbody td {
+    font-size: 14.5px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #myTable tbody td {
+        font-size: 13px;
+    }
+}
+

@@ -1,0 +1,437 @@
+﻿:root {
+    --bg: #0b0c2c;
+    --card-bg: rgba(11, 12, 44, 0.95);
+    --pulse: #00f5ff;
+    --spark: #ff006e;
+    --text-light: #e0f7fa;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.section-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 95vw;
+    max-height: 95vh;
+}
+
+/* Avatar Orb */
+.avatar-orb {
+    position: relative;
+    width: clamp(150px, 18vw, 250px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    /* filter: drop-shadow(0 0 35px rgba(0,245,255,0.7)); */
+    flex-shrink: 0;
+}
+
+.orb-core {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* background: radial-gradient(circle at 30% 30%, #00f5ff, #001f33); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid rgba(0,245,255,0.3); */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .orb-core img {
+        width: 85%;
+        height: 85%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+.orb-glow {
+    position: absolute;
+    inset: -12%;
+    /* background: conic-gradient(from 0deg, transparent, var(--pulse), transparent); */
+    filter: blur(25px);
+    animation: rotate 10s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.avatar-orb:hover .orb-core {
+    transform: scale(1.1);
+    box-shadow: 0 0 35px var(--pulse);
+}
+
+/* Info Card */
+.data-stream {
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    border-radius: 32px;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 items per row */
+    gap: 1rem 1.5rem;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow: auto;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+    .data-stream:hover {
+        transform: translateY(-3px);
+    }
+
+.stream-header {
+    grid-column: span 3;
+    /* header spans all 3 columns */
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+    top: -20px;
+}
+
+.username {
+    font-size: clamp(1.6rem, 2vw, 2.3rem);
+    font-weight: 700;
+    /* background: linear-gradient(90deg, var(--pulse), #00b4d8); */
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0.4
+    }
+}
+
+/* Info Lines */
+.info-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.info-label {
+    color: rgba(0, 245, 255, 0.8);
+    font-size: 0.82rem;
+    letter-spacing: 0.4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 500;
+}
+
+    .info-label i {
+        font-size: 1.5rem;
+        color: var(--pulse);
+        animation: pulseIcon 2s infinite ease-in-out;
+    }
+
+@keyframes pulseIcon {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.info-value {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 0.2rem;
+}
+
+/* Responsive: 1 column on small screens */
+@media(max-width:900px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .data-stream {
+        grid-template-columns: 1fr;
+        max-width: 90vw;
+        max-height: 75vh;
+    }
+
+    .wrapper .img-area {
+        top: 0px !important;
+    }
+
+    .stream-header {
+        top: -10px !important;
+    }
+
+    .quantum-actions {
+        flex-direction: column;
+    }
+}
+
+.wrapper,
+.wrapper .img-area,
+.buttons button,
+.wrapper,
+.wrapper .img-area,
+.icon,
+.wrapper,
+.wrapper .img-area,
+.buttons .q-btn {
+    background: #ecf0f3;
+    box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1;
+}
+
+.wrapper {
+    position: relative;
+    width: 350px;
+    padding: 30px;
+    border-radius: 10px;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+    .wrapper .icon {
+        font-size: 17px;
+        color: #31344b;
+        position: absolute;
+        cursor: pointer;
+        opacity: 0.7;
+        top: 15px;
+        height: 35px;
+        width: 35px;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 50%;
+        font-size: 16px;
+    }
+
+        .wrapper .icon i {
+            position: relative;
+            z-index: 9;
+        }
+
+        .wrapper .icon.arrow {
+            left: 15px;
+        }
+
+        .wrapper .icon.dots {
+            right: 15px;
+        }
+
+    .wrapper .img-area {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -25px;
+    }
+
+.img-area .inner-area {
+    height: calc(100% - 25px);
+    width: calc(100% - 25px);
+    border-radius: 50%;
+    position: relative;
+}
+
+.inner-area img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wrapper .name {
+    font-size: 23px;
+    font-weight: 500;
+    color: #31344b;
+    margin: 10px 0 5px 0;
+}
+
+
+.buttons button:hover:before,
+.buttons .q-btn:hover:before {
+    z-index: -1;
+    border-radius: 5px;
+}
+
+.wrapper .buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.buttons button,
+.buttons .q-btn {
+    position: relative;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 12px 0;
+    color: #31344b;
+    font-size: 17px;
+    font-weight: 400;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 8px;
+    margin: 5px 10px;
+}
+
+    .buttons button:first-child,
+    .buttons .q-btn:first-child {
+        margin-right: 10px;
+    }
+
+    .buttons button:last-child,
+    .buttons .q-btn:last-child {
+        margin-left: 10px;
+    }
+
+    .wrapper .icon:hover::before,
+    .buttons button:hover:before,
+    .buttons .q-btn:hover:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #ecf0f3;
+        box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+    }
+
+.wrapper .icon:hover::before {
+    border-radius: 50%;
+}
+
+/*  */
+/* Menu */
+.user-info-menu {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.flyout {
+    margin: 20px;
+    position: absolute;
+    background: #ebf6fe;
+    color: #010c13;
+    padding: 10px 24px;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    visibility: hidden; /* hidden by default */
+    opacity: 0;
+}
+
+    .flyout i {
+        font-size: 1.6rem;
+    }
+
+    .flyout:hover {
+        background: var(--dynamic-header-bg);
+        color: var(--dynamic-header-text);
+    }
+
+/* Instantly visible when active */
+.flyout-out {
+    visibility: visible;
+    opacity: 1;
+}
+
+    /* Fixed positions – no animation */
+    .flyout-out:nth-of-type(1) {
+        top: -1rem;
+        left: 3.3rem;
+    }
+
+    .flyout-out:nth-of-type(2) {
+        top: 3rem;
+        left: 3.3rem;
+    }
+
+    .flyout-out:nth-of-type(3) {
+        top: 7rem;
+        left: 3.3rem;
+    }
+
+    .flyout-out:nth-of-type(4) {
+        top: 11rem;
+        left: 3.3rem;
+    }
+
+    .flyout-out:nth-of-type(5) {
+        top: 15rem;
+        left: 3.3rem;
+    }
+/*  */
+.status {
+    background: #eee;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+    top: 6rem;
+    right: .5rem;
+    border: 3px solid white;
+    z-index: 99999;
+    position: absolute;
+}
+
+    .status.active {
+        background: green;
+    }
+
